@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
-import felix.com.proyectoestructuras.R;
+import co.eagerapp.manuelro.eager.R;
 
 public class AlarmReceiver extends BroadcastReceiver {
     public AlarmReceiver() {
