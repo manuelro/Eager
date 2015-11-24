@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import co.eagerapp.manuelro.eager.Contact.ContactActivity;
 import co.eagerapp.manuelro.eager.R;
 
 public class PersonActivity extends AppCompatActivity {
@@ -27,5 +28,4 @@ public class PersonActivity extends AppCompatActivity {
             }
         });
     }
-
 }

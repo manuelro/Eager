@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import co.eagerapp.manuelro.eager.R;
+import co.eagerapp.manuelro.eager.Schedule.ScheduleActivity;
+import co.eagerapp.manuelro.eager.ScheduleDay.ScheduleDayActivity;
 
 public class CourseActivity extends AppCompatActivity {
 
@@ -27,5 +29,4 @@ public class CourseActivity extends AppCompatActivity {
             }
         });
     }
-
 }
