@@ -11,6 +11,9 @@ import co.eagerapp.manuelro.eager.R;
 
 public class CycleActivity extends AppCompatActivity {
 
+    private int duration;
+    private String cycleId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,4 +31,19 @@ public class CycleActivity extends AppCompatActivity {
         });
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public String getCycleId() {
+        return cycleId;
+    }
+
+    public void setCycleId(String cycleId) {
+        this.cycleId = cycleId;
+    }
 }
