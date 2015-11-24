@@ -11,9 +11,6 @@ import co.eagerapp.manuelro.eager.R;
 
 public class GroupActivity extends AppCompatActivity {
 
-    private String name;
-    private String description;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,21 +26,5 @@ public class GroupActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

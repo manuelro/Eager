@@ -13,12 +13,6 @@ import co.eagerapp.manuelro.eager.ScheduleDay.ScheduleDayActivity;
 
 public class CourseActivity extends AppCompatActivity {
 
-    private String name;
-    private String suite;
-    private ScheduleActivity schedule;
-    //private Professor professor;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,36 +29,4 @@ public class CourseActivity extends AppCompatActivity {
             }
         });
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSuite() {
-        return suite;
-    }
-
-    public void setSuite(String suite) {
-        this.suite = suite;
-    }
-
-    public ScheduleActivity getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(ScheduleActivity schedule) {
-        this.schedule = schedule;
-    }
-
-    /*public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
-    }*/
 }

@@ -1,9 +1,10 @@
 package co.eagerapp.manuelro.eager.Structures.Lista;
 
-import co.eagerapp.manuelro.eager.Course.CourseActivity;
-import co.eagerapp.manuelro.eager.Cycle.CycleActivity;
-import co.eagerapp.manuelro.eager.Group.GroupActivity;
-import co.eagerapp.manuelro.eager.ScheduleDay.ScheduleDayActivity;
+
+import co.eagerapp.manuelro.eager.Course.Plain.CourseModel;
+import co.eagerapp.manuelro.eager.Cycle.Plain.CycleModel;
+import co.eagerapp.manuelro.eager.Group.Plain.GroupModel;
+import co.eagerapp.manuelro.eager.ScheduleDay.Plain.ScheduleDayModel;
 import co.eagerapp.manuelro.eager.Structures.Node.Node;
 
 public class Lista {
@@ -88,7 +89,7 @@ public class Lista {
         }
     }
 
-    public void insertGroup(GroupActivity group) {
+    public void insertGroup(GroupModel group) {
         int value;
         if (head == null) head = new Node(group);
         else if (head.getNext() == null) {
@@ -126,7 +127,7 @@ public class Lista {
         }
     }
 
-    public void insertCycle(CycleActivity cycle) {
+    public void insertCycle(CycleModel cycle) {
         int value;
         if (head == null) head = new Node(cycle);
         else if (head.getNext() == null) {
@@ -164,7 +165,7 @@ public class Lista {
         }
     }
 
-    public void insertCourse(CourseActivity course) {
+    public void insertCourse(CourseModel course) {
         int value;
         if (head == null) head = new Node(course);
         else if (head.getNext() == null) {
@@ -202,7 +203,7 @@ public class Lista {
         }
     }
 
-    public void insertScheduleDay(ScheduleDayActivity scheduleDay) {
+    public void insertScheduleDay(ScheduleDayModel scheduleDay) {
         int value;
         if (head == null) head = new Node(scheduleDay);
         else if (head.getNext() == null) {
@@ -278,7 +279,7 @@ public class Lista {
         }
     }
 
-    public void deleteGroup(GroupActivity group) {
+    public void deleteGroup(GroupModel group) {
 
         Node aux = head;
 
@@ -297,7 +298,7 @@ public class Lista {
         }
     }
 
-    public void deleteCycle(CycleActivity cycle) {
+    public void deleteCycle(CycleModel cycle) {
 
         Node aux = head;
 
@@ -316,7 +317,7 @@ public class Lista {
         }
     }
 
-    public void deleteCourse(CourseActivity course) {
+    public void deleteCourse(CourseModel course) {
 
         Node aux = head;
 
@@ -335,7 +336,7 @@ public class Lista {
         }
     }
 
-    public void deleteScheduleDay(ScheduleDayActivity scheduleDay) {
+    public void deleteScheduleDay(ScheduleDayModel scheduleDay) {
 
         Node aux = head;
 

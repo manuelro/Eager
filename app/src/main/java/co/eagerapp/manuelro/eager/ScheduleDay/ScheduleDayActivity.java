@@ -6,14 +6,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import java.util.Date;
 
 import co.eagerapp.manuelro.eager.R;
 
 public class ScheduleDayActivity extends AppCompatActivity {
-
-    private Date date;
-    private int dayCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +26,5 @@ public class ScheduleDayActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getDayCode() {
-        return dayCode;
-    }
-
-    public void setDayCode(int dayCode) {
-        this.dayCode = dayCode;
     }
 }

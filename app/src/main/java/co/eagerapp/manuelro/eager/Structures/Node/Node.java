@@ -1,18 +1,22 @@
 package co.eagerapp.manuelro.eager.Structures.Node;
 
 import co.eagerapp.manuelro.eager.Course.CourseActivity;
+import co.eagerapp.manuelro.eager.Course.Plain.CourseModel;
 import co.eagerapp.manuelro.eager.Cycle.CycleActivity;
+import co.eagerapp.manuelro.eager.Cycle.Plain.CycleModel;
 import co.eagerapp.manuelro.eager.Group.GroupActivity;
+import co.eagerapp.manuelro.eager.Group.Plain.GroupModel;
+import co.eagerapp.manuelro.eager.ScheduleDay.Plain.ScheduleDayModel;
 import co.eagerapp.manuelro.eager.ScheduleDay.ScheduleDayActivity;
 
 public class Node {
 
     private String email;
     private int phoneNumber;
-    private CourseActivity course;
-    private CycleActivity cycle;
-    private GroupActivity group;
-    private ScheduleDayActivity scheduleDay;
+    private CourseModel course;
+    private CycleModel cycle;
+    private GroupModel group;
+    private ScheduleDayModel scheduleDay;
     private Node next;
 
     public Node(String email) {
@@ -23,24 +27,20 @@ public class Node {
         this.setPhoneNumber(phoneNumber);
     }
 
-    public Node(CycleActivity cycle) {
+    public Node(CycleModel cycle) {
         this.setCycle(cycle);
     }
 
-    public Node(CourseActivity course) {
+    public Node(CourseModel course) {
         this.setCourse(course);
     }
 
-    public Node(GroupActivity group) {
+    public Node(GroupModel group) {
         this.setGroup(group);
     }
 
-    public Node(ScheduleDayActivity scheduleDay) {
+    public Node(ScheduleDayModel scheduleDay) {
         this.setScheduleDay(scheduleDay);
-    }
-
-    public CourseActivity getCourse() {
-        return course;
     }
 
     public String getEmail() {
@@ -59,31 +59,35 @@ public class Node {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setCourse(CourseActivity course) {
+    public CourseModel getCourse() {
+        return course;
+    }
+
+    public void setCourse(CourseModel course) {
         this.course = course;
     }
 
-    public CycleActivity getCycle() {
+    public CycleModel getCycle() {
         return cycle;
     }
 
-    public void setCycle(CycleActivity cycle) {
+    public void setCycle(CycleModel cycle) {
         this.cycle = cycle;
     }
 
-    public GroupActivity getGroup() {
+    public GroupModel getGroup() {
         return group;
     }
 
-    public void setGroup(GroupActivity group) {
+    public void setGroup(GroupModel group) {
         this.group = group;
     }
 
-    public ScheduleDayActivity getScheduleDay() {
+    public ScheduleDayModel getScheduleDay() {
         return scheduleDay;
     }
 
-    public void setScheduleDay(ScheduleDayActivity scheduleDay) {
+    public void setScheduleDay(ScheduleDayModel scheduleDay) {
         this.scheduleDay = scheduleDay;
     }
 

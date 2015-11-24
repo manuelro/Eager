@@ -12,10 +12,6 @@ import co.eagerapp.manuelro.eager.R;
 
 public class PersonActivity extends AppCompatActivity {
 
-    private String name;
-    private ContactActivity contact;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,21 +27,5 @@ public class PersonActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public ContactActivity getContact() {
-        return contact;
-    }
-
-    public void setContact(ContactActivity contact) {
-        this.contact = contact;
     }
 }
