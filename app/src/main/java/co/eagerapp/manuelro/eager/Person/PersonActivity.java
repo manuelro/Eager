@@ -7,9 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import co.eagerapp.manuelro.eager.Contact.ContactActivity;
 import co.eagerapp.manuelro.eager.R;
 
 public class PersonActivity extends AppCompatActivity {
+
+    private String name;
+    private ContactActivity contact;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,4 +33,19 @@ public class PersonActivity extends AppCompatActivity {
         });
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ContactActivity getContact() {
+        return contact;
+    }
+
+    public void setContact(ContactActivity contact) {
+        this.contact = contact;
+    }
 }

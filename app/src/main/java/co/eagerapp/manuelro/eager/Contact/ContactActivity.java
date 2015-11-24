@@ -11,6 +11,10 @@ import co.eagerapp.manuelro.eager.R;
 
 public class ContactActivity extends AppCompatActivity {
 
+    private String email;
+    private int phoneNumber;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,4 +32,19 @@ public class ContactActivity extends AppCompatActivity {
         });
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
