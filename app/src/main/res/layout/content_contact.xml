@@ -10,4 +10,12 @@
     tools:showIn="@layout/activity_contact"
     tools:context="co.eagerapp.manuelro.eager.Contact.ContactActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Activity"
+        android:id="@+id/textView4"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
 </RelativeLayout>
