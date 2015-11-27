@@ -82,4 +82,17 @@ public class EventModel {
     public void setAlarm(AlarmModel alarm) {
         this.alarm = alarm;
     }
+
+    @Override
+    public String toString() {
+        return "EventModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                ", startdate=" + startdate +
+                ", finaldate=" + finaldate +
+                ", alarm=" + alarm +
+                '}';
+    }
 }

@@ -19,7 +19,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         //ACA VA LA FUNCIONALIDAD CUANDO UNA ALARMA SE ACTIVA
         //EL INTENT CONTIENE EL TITULO DE LA ALARMA
         Uri ringtone = Uri.parse(intent.getExtras().getString("ringtone"));
-        Toast.makeText(context, "Mensaje: "+intent.getExtras().getString("title"), Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Mensaje: " + intent.getExtras().getString("title"), Toast.LENGTH_LONG).show();
         NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.icon) //cambiar icono al deseado
                 .setContentTitle("Alerta activa")

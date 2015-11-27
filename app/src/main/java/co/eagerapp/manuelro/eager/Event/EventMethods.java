@@ -12,17 +12,21 @@ import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
  * Created by Jose Pablo on 23/11/2015.
  */
 public class EventMethods {
-    Lista lista = new Lista();
+    private Lista eventsList;
 
-
-
-    public void CrearActividad( String name, String description, EventTypeModel type, String typename, String typedescription, Date startdate, Date finaldate, AlarmModel alarma){
-        EventModel event = new EventModel(lista.CuentaNodos()+1, name, description, new EventTypeModel(typename, typedescription), startdate, finaldate, alarma);
-        lista.inserta(new Nodo(event));
+    public EventMethods(){
+        eventsList = new Lista();
     }
 
+    public void CrearActividad( String name, String description, EventTypeModel type, Date startdate, Date finaldate, AlarmModel alarma){
+        EventModel event = new EventModel(eventsList.CuentaNodos()+1, name, description,type, startdate, finaldate, alarma);
+        eventsList.inserta(new Nodo(event));
+    }
+
+
+
     public void EliminarActividad(int id){
-        lista.EliminaN(id);
+        eventsList.EliminaN(id);
     }
 
     public void EditarActividad(EventModel event, String name, String description, EventTypeModel type, String typename, String typedescription, Date startdate, Date finaldate, AlarmModel alarma){
@@ -37,7 +41,7 @@ public class EventMethods {
     @Override
     public String toString() {
         return "MetodosActividad{" +
-                "lista=" + lista +
+                "lista=" + eventsList +
                 '}';
     }
 }
