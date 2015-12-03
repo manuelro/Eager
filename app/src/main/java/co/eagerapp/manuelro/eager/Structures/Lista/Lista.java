@@ -85,5 +85,34 @@ public class Lista {
             System.out.println("Vacia");
         }
     }
-
+    //FUNCION BUSCAR POR POSICIONs
+    public Object get(int position){
+        Nodo aux=cabeza;
+        try{
+            if(position==1){
+                System.out.println("Se encontro: "+cabeza);
+                return cabeza;
+            }else if(position==CuentaNodos()){
+                System.out.println("Se encontro:"+ultimo);
+                return ultimo;
+            }else if(position!=1){
+                int x=1;
+                while(cabeza!=aux.getNext()){
+                    if(position==x){
+                        System.out.println("Se encontro: "+aux);
+                        return aux;
+                    }
+                    x++;
+                    aux=aux.getNext();
+                }
+            }
+            if(position>CuentaNodos()){
+                System.out.println("Se encontro: null");
+                return null;
+            }
+        }catch(NullPointerException e){
+            System.out.println("Vacia");
+        }
+        return null;
+    }
 }

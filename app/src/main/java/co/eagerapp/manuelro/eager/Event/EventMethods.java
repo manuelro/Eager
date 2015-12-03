@@ -5,6 +5,7 @@ import java.util.Date;
 import co.eagerapp.manuelro.eager.Alarm.Plain.AlarmModel;
 import co.eagerapp.manuelro.eager.Event.Plain.EventModel;
 import co.eagerapp.manuelro.eager.EventType.Plain.EventTypeModel;
+import co.eagerapp.manuelro.eager.Structures.Cola.ColaMethods;
 import co.eagerapp.manuelro.eager.Structures.Lista.Lista;
 import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
 
@@ -13,8 +14,10 @@ import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
  */
 public class EventMethods {
     private Lista eventsList;
+    private ColaMethods colaExpired;
 
     public EventMethods(){
+        colaExpired = new ColaMethods();
         eventsList = new Lista();
     }
 
@@ -26,6 +29,7 @@ public class EventMethods {
 
 
     public void EliminarActividad(int id){
+        colaExpired.agregar(eventsList.get(id));
         eventsList.EliminaN(id);
     }
 

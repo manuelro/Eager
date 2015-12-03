@@ -22,6 +22,18 @@ public class CycleModel {
         courses.inserta(new Nodo(course));
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getLenght() {
+        return lenght;
+    }
+
+    public void setLenght(int lenght) {
+        this.lenght = lenght;
+    }
+
     public Lista getCourses(){
         return courses;
     }
