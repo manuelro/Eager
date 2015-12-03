@@ -73,6 +73,12 @@
             android:label="@string/title_activity_event_type"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+
+        <receiver
+            android:name=".Alarm.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" >
+        </receiver>
     </application>
 
 </manifest>

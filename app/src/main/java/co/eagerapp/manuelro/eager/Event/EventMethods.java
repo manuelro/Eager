@@ -5,6 +5,7 @@ import java.util.Date;
 import co.eagerapp.manuelro.eager.Alarm.Plain.AlarmModel;
 import co.eagerapp.manuelro.eager.Event.Plain.EventModel;
 import co.eagerapp.manuelro.eager.EventType.Plain.EventTypeModel;
+import co.eagerapp.manuelro.eager.Structures.Cola.ColaMethods;
 import co.eagerapp.manuelro.eager.Structures.Lista.Lista;
 import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
 
@@ -12,17 +13,24 @@ import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
  * Created by Jose Pablo on 23/11/2015.
  */
 public class EventMethods {
-    Lista lista = new Lista();
+    private Lista eventsList;
+    private ColaMethods colaExpired;
 
-
-
-    public void CrearActividad( String name, String description, EventTypeModel type, String typename, String typedescription, Date startdate, Date finaldate, AlarmModel alarma){
-        EventModel event = new EventModel(lista.CuentaNodos()+1, name, description, new EventTypeModel(typename, typedescription), startdate, finaldate, alarma);
-        lista.inserta(new Nodo(event));
+    public EventMethods(){
+        colaExpired = new ColaMethods();
+        eventsList = new Lista();
     }
 
+    public void CrearActividad( String name, String description, EventTypeModel type, Date startdate, Date finaldate, AlarmModel alarma){
+        EventModel event = new EventModel(eventsList.CuentaNodos()+1, name, description,type, startdate, finaldate, alarma);
+        eventsList.inserta(new Nodo(event));
+    }
+
+
+
     public void EliminarActividad(int id){
-        lista.EliminaN(id);
+        colaExpired.agregar(eventsList.get(id));
+        eventsList.EliminaN(id);
     }
 
     public void EditarActividad(EventModel event, String name, String description, EventTypeModel type, String typename, String typedescription, Date startdate, Date finaldate, AlarmModel alarma){
@@ -37,7 +45,7 @@ public class EventMethods {
     @Override
     public String toString() {
         return "MetodosActividad{" +
-                "lista=" + lista +
+                "lista=" + eventsList +
                 '}';
     }
 }

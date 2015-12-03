@@ -14,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
+import co.eagerapp.manuelro.eager.Alarm.AlarmActivity;
 import co.eagerapp.manuelro.eager.Contact.ContactActivity;
 import co.eagerapp.manuelro.eager.Course.CourseActivity;
 import co.eagerapp.manuelro.eager.Event.EventActivity;
@@ -46,8 +48,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
     }
 
     @Override
