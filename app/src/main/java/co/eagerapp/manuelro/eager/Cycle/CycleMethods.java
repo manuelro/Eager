@@ -1,6 +1,7 @@
 package co.eagerapp.manuelro.eager.Cycle;
 
 import co.eagerapp.manuelro.eager.Cycle.Plain.CycleModel;
+import co.eagerapp.manuelro.eager.Structures.Arbol.Arbol;
 import co.eagerapp.manuelro.eager.Structures.Lista.Lista;
 import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
 
@@ -9,6 +10,7 @@ import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
  */
 public class CycleMethods {
     private Lista cycles;
+    private Arbol period;
     public CycleMethods(){
         cycles = new Lista();
     }
@@ -38,8 +40,10 @@ public class CycleMethods {
         }
     }
 
-    private boolean lengthExistst(int lenght){
-        //
-        return false;
+    private boolean lengthExists(int lenght){
+        period.insert(4); //Cuatrimestres
+        period.insert(3); //Trimestres
+        period.insert(6); //Semestres
+        return period.validate(lenght);
     }
 }
