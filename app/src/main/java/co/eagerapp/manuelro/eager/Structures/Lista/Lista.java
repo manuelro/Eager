@@ -115,4 +115,12 @@ public class Lista {
         }
         return null;
     }
+
+    public Nodo getCabeza() {
+        return cabeza;
+    }
+
+    public Nodo getUltimo() {
+        return ultimo;
+    }
 }
