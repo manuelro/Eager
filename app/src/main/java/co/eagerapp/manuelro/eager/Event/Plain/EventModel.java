@@ -3,12 +3,15 @@ package co.eagerapp.manuelro.eager.Event.Plain;
 import java.util.Date;
 
 import co.eagerapp.manuelro.eager.Alarm.Plain.AlarmModel;
+import co.eagerapp.manuelro.eager.Common.Interfaces.MockData;
 import co.eagerapp.manuelro.eager.EventType.Plain.EventTypeModel;
+import co.eagerapp.manuelro.eager.Structures.Lista.Lista;
+import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
 
 /**
  * Created by Jose on 24/11/2015.
  */
-public class EventModel {
+public class EventModel implements MockData{
     int id;
     String name;
     String description;
@@ -16,6 +19,12 @@ public class EventModel {
     Date startdate;
     Date finaldate;
     AlarmModel alarm;
+
+
+    public EventModel(int id, EventTypeModel type) {
+        this.id = id;
+        this.type = type;
+    }
 
     public EventModel(int id, String name, String description, EventTypeModel type, Date startdate, Date finaldate, AlarmModel alarm) {
         this.id = id;
@@ -94,5 +103,20 @@ public class EventModel {
                 ", finaldate=" + finaldate +
                 ", alarm=" + alarm +
                 '}';
+    }
+
+
+    @Override
+    public void populate(int n) {
+        Lista eventsList = new Lista();
+
+        for(int i = 0; i <= n; i++){
+            EventTypeModel eventType = new EventTypeModel("Meeting");
+            EventModel event = new EventModel(i, eventType);
+            Nodo nodo = new Nodo(event);
+            eventsList.inserta(nodo);
+        }
+
+
     }
 }

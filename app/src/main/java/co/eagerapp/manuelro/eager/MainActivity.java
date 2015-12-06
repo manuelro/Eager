@@ -1,9 +1,12 @@
 package co.eagerapp.manuelro.eager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,12 +17,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import co.eagerapp.manuelro.eager.Alarm.AlarmActivity;
-import co.eagerapp.manuelro.eager.Contact.ContactActivity;
+import java.util.zip.Inflater;
+
 import co.eagerapp.manuelro.eager.Course.CourseActivity;
+import co.eagerapp.manuelro.eager.Course.Plain.CourseModel;
 import co.eagerapp.manuelro.eager.Event.EventActivity;
+import co.eagerapp.manuelro.eager.Event.Plain.EventModel;
+import co.eagerapp.manuelro.eager.Structures.Lista.Lista;
+import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,6 +58,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        displayCourses();
+
     }
 
     @Override
@@ -98,4 +111,49 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    // Genera contenido falso para los cursos
+    private Lista generateCoursesList(){
+        Lista list = new Lista();
+        int n = 5;
+
+        for (int i = 0; i <= n; i++) {
+            CourseModel course = new CourseModel("Curso " + i);
+            course.populate(3);
+            Nodo nodo = new Nodo(course);
+            list.inserta(nodo);
+        }
+
+
+        return list;
+    }
+
+    private void displayCourses(){
+        Lista courses = generateCoursesList();
+        Nodo aux = courses.getCabeza();
+        LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        if(aux != null)
+            do {
+                CourseModel course = (CourseModel) aux.getData();
+                View custom = inflater.inflate(R.layout.course_view, null);
+                TextView courseTitle = (TextView) custom.findViewById(R.id.courseTitle);
+                TextView suiteId = (TextView) custom.findViewById(R.id.suiteId);
+
+                courseTitle.setText(course.getName());
+                suiteId.setText(Integer.toString(course.getSuite()));
+
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(0, 0, 0, 50);
+
+                mainLayout.addView(custom, params);
+
+
+
+                aux = aux.getNext();
+            } while(aux.getNext() != courses.getCabeza());
+
+    }
+
 }

@@ -7,6 +7,10 @@ public class EventTypeModel {
     String name;
     String description;
 
+    public EventTypeModel(String name) {
+        this.name = name;
+    }
+
     public EventTypeModel(String name, String description) {
         this.name = name;
         this.description = description;
