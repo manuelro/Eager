@@ -20,6 +20,11 @@ public class EventModel implements MockData{
     Date finaldate;
     AlarmModel alarm;
 
+    public EventModel(String name, int id, EventTypeModel type) {
+        this.name = name;
+        this.id = id;
+        this.type = type;
+    }
 
     public EventModel(int id, EventTypeModel type) {
         this.id = id;

@@ -1,5 +1,11 @@
 package co.eagerapp.manuelro.eager.Course.Plain;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import co.eagerapp.manuelro.eager.Common.Contracts.SchemaContract;
+import co.eagerapp.manuelro.eager.Common.Helpers.SchemaBuilderHelper;
 import co.eagerapp.manuelro.eager.Common.Interfaces.MockData;
 import co.eagerapp.manuelro.eager.Event.Plain.EventModel;
 import co.eagerapp.manuelro.eager.EventType.Plain.EventTypeModel;
@@ -45,13 +51,14 @@ public class CourseModel implements MockData {
         return events;
     }
 
+
     @Override
     public void populate(int n) {
         Lista eventsList = new Lista();
         EventTypeModel eventType = new EventTypeModel("Meeting");
 
         for(int i = 0; i <= n; i++){
-            EventModel event = new EventModel(i, eventType);
+            EventModel event = new EventModel("Event " + i, i, eventType);
             Nodo nodo = new Nodo(event);
             eventsList.inserta(nodo);
         }
@@ -59,5 +66,24 @@ public class CourseModel implements MockData {
         // Se asignan los datos
         events = eventsList;
         suite = (int) Math.round(Math.random()*300);
+    }
+
+    public void populateDatabase(Context context, int n){
+        SchemaBuilderHelper dbHelper = new SchemaBuilderHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        for (int i = 0; i <= n; i++){
+            values.put(SchemaContract.Course.COLUMN_NAME_NAME, "Course number " + i);
+            values.put(SchemaContract.Course.COLUMN_NAME_SUITE, (int) Math.round(Math.random()*300));
+        }
+
+        long rowId;
+        rowId = db.insert(
+                SchemaContract.Course.TABLE_NAME,
+                "NULLABLE",
+                values
+        );
+
     }
 }
