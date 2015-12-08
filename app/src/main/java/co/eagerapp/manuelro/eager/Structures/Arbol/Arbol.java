@@ -7,6 +7,14 @@ public class Arbol {
 
     private Nodo raiz;
 
+    public void setRaiz(Nodo raiz) {
+        this.raiz = raiz;
+    }
+
+    public Nodo getRaiz() {
+        return raiz;
+    }
+
     public void inOrden() {
         if (raiz != null) {
             inOrdenR(raiz);

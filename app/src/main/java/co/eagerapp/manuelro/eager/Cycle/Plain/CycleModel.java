@@ -14,12 +14,28 @@ public class CycleModel {
 
     public CycleModel(int lenght, int id) {
         this.lenght = lenght;
-        this.id=id;
+        this.id = id;
         courses = new Lista();
     }
 
     public void addCourse(CourseModel course){
         courses.inserta(new Nodo(course));
+    }
+
+    public void setCourses(Lista courses) {
+        this.courses = courses;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLenght(int lenght) {
+        this.lenght = lenght;
+    }
+
+    public Lista getCourses() {
+        return courses;
     }
 
     public int getId() {
@@ -28,13 +44,5 @@ public class CycleModel {
 
     public int getLenght() {
         return lenght;
-    }
-
-    public void setLenght(int lenght) {
-        this.lenght = lenght;
-    }
-
-    public Lista getCourses(){
-        return courses;
     }
 }

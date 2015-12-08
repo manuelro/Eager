@@ -33,6 +33,7 @@ import co.eagerapp.manuelro.eager.Common.Listeners.CustomOnClickListener;
 import co.eagerapp.manuelro.eager.Common.Singletons.DataHolder;
 import co.eagerapp.manuelro.eager.Course.CourseActivity;
 import co.eagerapp.manuelro.eager.Course.Plain.CourseModel;
+import co.eagerapp.manuelro.eager.Cycle.CycleActivity;
 import co.eagerapp.manuelro.eager.Event.EventActivity;
 import co.eagerapp.manuelro.eager.Structures.Lista.Lista;
 import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
@@ -101,7 +102,6 @@ public class MainActivity extends AppCompatActivity
 
         app = (DataHolder) getApplicationContext();
         app.populate();
-
         displayCourses();
     }
 
@@ -150,33 +150,14 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_courses) {
-            startActivity(new Intent(this, CourseActivity.class));
-        } else if (id == R.id.nav_activities) {
-            startActivity(new Intent(this, EventActivity.class));
+        if (id == R.id.nav_cycles) {
+            startActivity(new Intent(this, CycleActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    // Genera contenido falso para los cursos
-    private Lista generateCoursesList(int n){
-        Lista list = new Lista();
-
-        for (int i = 0; i < n; i++) {
-            CourseModel course = new CourseModel("Curso " + i);
-            course.populate(3);
-            Nodo nodo = new Nodo(course);
-            list.inserta(nodo);
-        }
-
-
-        return list;
-    }
-
-
 
     private void displayCourses(){
         final MainActivity self = this;

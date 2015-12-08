@@ -91,6 +91,11 @@
             android:label="@string/title_activity_course_edit"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".Cycle.CycleAddActivity"
+            android:label="@string/title_activity_cycle_add"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

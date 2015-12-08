@@ -32,7 +32,7 @@ public class CourseEditActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        setTitle("Edit Course");
         app = (DataHolder) getApplicationContext();
         bootstrapActivity();
     }

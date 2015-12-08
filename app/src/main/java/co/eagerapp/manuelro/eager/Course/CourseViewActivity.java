@@ -45,6 +45,8 @@ public class CourseViewActivity extends AppCompatActivity {
         NestedScrollView mainView = (NestedScrollView) findViewById(R.id.courseDetailsView);
 
         app = (DataHolder) getApplicationContext();
+        setTitle(app.getCourse().getName());
+
         if(app.getCourse() != null){
             TextView courseName = (TextView) findViewById(R.id.courseName);
             TextView courseSuite = (TextView) findViewById(R.id.courseSuite);

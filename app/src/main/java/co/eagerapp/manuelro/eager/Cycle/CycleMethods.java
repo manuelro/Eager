@@ -41,9 +41,10 @@ public class CycleMethods {
     }
 
     private boolean lengthExists(int lenght){
-        period.insert(4); //Cuatrimestres
-        period.insert(3); //Trimestres
-        period.insert(6); //Semestres
-        return period.validate(lenght);
+//        period.insert(4); //Cuatrimestres
+//        period.insert(3); //Trimestres
+//        period.insert(6); //Semestres
+//        return period.validate(lenght);
+        return true;
     }
 }

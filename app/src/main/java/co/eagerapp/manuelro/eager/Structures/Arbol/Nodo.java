@@ -10,8 +10,8 @@ public class Nodo {
     private Nodo hijoDer;
     private Nodo hijoIzq;
 
-    public Nodo(Object data) {
-        this.data = data;
+    public Nodo(int id) {
+        this.id = id;
     }
 
     @Override
