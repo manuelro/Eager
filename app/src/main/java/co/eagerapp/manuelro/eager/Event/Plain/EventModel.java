@@ -124,4 +124,9 @@ public class EventModel implements MockData{
 
 
     }
+
+    @Override
+    public void populate() {
+
+    }
 }

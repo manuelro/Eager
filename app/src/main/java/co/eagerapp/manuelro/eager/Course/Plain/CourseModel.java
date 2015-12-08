@@ -67,7 +67,7 @@ public class CourseModel implements MockData {
         Lista eventsList = new Lista();
         EventTypeModel eventType = new EventTypeModel("Meeting");
 
-        for(int i = 0; i <= eventsN; i++){
+        for(int i = 0; i < eventsN; i++){
             EventModel event = new EventModel("Event title for event number " + i, i, eventType);
             Nodo nodo = new Nodo(event);
             eventsList.inserta(nodo);
@@ -78,12 +78,18 @@ public class CourseModel implements MockData {
         suite = (int) Math.round(Math.random()*300);
     }
 
+    @Override
+    public void populate() {
+
+    }
+
+
     public void populateDatabase(Context context, int n){
         SchemaBuilderHelper dbHelper = new SchemaBuilderHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         ContentValues values = new ContentValues();
 
-        for (int i = 0; i <= n; i++){
+        for (int i = 0; i < n; i++){
             values.put(SchemaContract.Course.COLUMN_NAME_NAME, "Course number " + i);
             values.put(SchemaContract.Course.COLUMN_NAME_SUITE, (int) Math.round(Math.random()*300));
         }

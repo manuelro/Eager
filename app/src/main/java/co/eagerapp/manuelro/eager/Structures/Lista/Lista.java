@@ -61,6 +61,8 @@ public class Lista {
 
     public void EliminaN(int n){
         Nodo aux=cabeza;
+        System.out.print(toString());
+
         try{
             if(n==1){
                 ultimo.setNext(aux.getNext());

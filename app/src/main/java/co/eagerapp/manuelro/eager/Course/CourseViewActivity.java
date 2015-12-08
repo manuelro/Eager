@@ -64,6 +64,8 @@ public class CourseViewActivity extends AppCompatActivity {
         final LinearLayout mainLayout = (LinearLayout) findViewById(R.id.eventsListView);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        mainLayout.removeAllViews();
+
         if(aux != null)
             do {
                 final EventModel event = (EventModel) aux.getData();
@@ -79,7 +81,7 @@ public class CourseViewActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Nodo aux = events.getCabeza();
-                        int counter = 0;
+                        int counter = 1;
                         if (aux != null)
                             do {
                                 if (((EventModel)aux.getData()) == event) {
@@ -118,36 +120,13 @@ public class CourseViewActivity extends AppCompatActivity {
 
         while(aux != null){
             EventModel event = (EventModel) aux.getData();
-            final View custom = inflater.inflate(R.layout.event_view_list_item, null);
+            final View custom = inflater.inflate(R.layout.past_event_view_list_item, null);
             final TextView eventTitle = (TextView) custom.findViewById(R.id.eventListItemTitle);
             TextView eventType = (TextView) custom.findViewById(R.id.eventListItemType);
             Button deteleEventButton = (Button) custom.findViewById(R.id.deteleEventButton);
 
             eventTitle.setText(event.getName());
             eventType.setText(event.getType().getName());
-
-            deteleEventButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    Nodo aux = events.getCabeza();
-//                    int counter = 0;
-//                    if (aux != null)
-//                        do {
-//                            if (((EventModel) aux.getData()) == event) {
-//                                eventTitle.setText("Deleted");
-//                                mainLayout.removeView(custom);
-//                                co.eagerapp.manuelro.eager.Structures.Cola.Nodo nodo = new co.eagerapp.manuelro.eager.Structures.Cola.Nodo(event);
-//                                app.getCourse().getPastEvents().enCola(nodo);
-//                                displayPastEvents();
-//                                events.EliminaN(counter);
-//                                break;
-//                            } else {
-//                                counter++;
-//                                aux = aux.getNext();
-//                            }
-//                        } while (aux.getNext() != events.getCabeza());
-                }
-            });
 
             backup.enCola(aux);
             mainLayout.addView(custom);

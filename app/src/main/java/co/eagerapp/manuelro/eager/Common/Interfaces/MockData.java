@@ -5,4 +5,5 @@ package co.eagerapp.manuelro.eager.Common.Interfaces;
  */
 public interface MockData {
     public void populate(int n);
+    public void populate();
 }

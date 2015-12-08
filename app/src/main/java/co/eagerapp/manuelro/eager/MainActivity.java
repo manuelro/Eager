@@ -29,6 +29,7 @@ import java.io.Serializable;
 
 import co.eagerapp.manuelro.eager.Common.Contracts.SchemaContract;
 import co.eagerapp.manuelro.eager.Common.Helpers.SchemaBuilderHelper;
+import co.eagerapp.manuelro.eager.Common.Listeners.CustomOnClickListener;
 import co.eagerapp.manuelro.eager.Common.Singletons.DataHolder;
 import co.eagerapp.manuelro.eager.Course.CourseActivity;
 import co.eagerapp.manuelro.eager.Course.Plain.CourseModel;
@@ -38,6 +39,7 @@ import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     private DataHolder app;
 
 
@@ -98,7 +100,14 @@ public class MainActivity extends AppCompatActivity
 //        mainLayout.addView(text);
 
         app = (DataHolder) getApplicationContext();
-        app.setCourses(generateCoursesList());
+        app.populate();
+
+        displayCourses();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
 
         displayCourses();
     }
@@ -153,11 +162,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     // Genera contenido falso para los cursos
-    private Lista generateCoursesList(){
+    private Lista generateCoursesList(int n){
         Lista list = new Lista();
-        int n = 5;
 
-        for (int i = 0; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             CourseModel course = new CourseModel("Curso " + i);
             course.populate(3);
             Nodo nodo = new Nodo(course);
@@ -168,39 +176,60 @@ public class MainActivity extends AppCompatActivity
         return list;
     }
 
+
+
     private void displayCourses(){
         final MainActivity self = this;
-        final Lista courses = generateCoursesList();
+        final Lista courses = app.getCourses();
         Nodo aux = courses.getCabeza();
-        LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
+        final LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        int counter = 1;
+
+        mainLayout.removeAllViews();
 
         if(aux != null)
             do {
                 final CourseModel course = (CourseModel) aux.getData();
-                View custom = inflater.inflate(R.layout.course_view_list_item, null);
+                final View custom = inflater.inflate(R.layout.course_view_list_item, null);
                 TextView courseTitle = (TextView) custom.findViewById(R.id.courseTitle);
                 TextView suiteId = (TextView) custom.findViewById(R.id.suiteId);
-                Button btnView = (Button) custom.findViewById(R.id.course_view_list_item_button_view);
+                Button courseViewButton = (Button) custom.findViewById(R.id.courseViewButton);
+                Button courseEditButton = (Button) custom.findViewById(R.id.courseEditButton);
+                Button courseDeleteButton = (Button) custom.findViewById(R.id.courseDeleteButton);
 
                 courseTitle.setText(course.getName());
                 suiteId.setText(Integer.toString(course.getSuite()));
 
-                btnView.setOnClickListener(new View.OnClickListener() {
+                courseViewButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(self, co.eagerapp.manuelro.eager.Course.CourseViewActivity.class);
-                        //intent.putExtra("course", (Parcelable) course);
                         app.setCourse(course);
                         startActivity(intent);
                     }
                 });
 
-                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                params.setMargins(0, 0, 0, 50);
+                courseDeleteButton.setOnClickListener(new CustomOnClickListener(counter) {
+                    @Override
+                    public void onClick(View v) {
+                        app.getCourses().EliminaN(this.getNodeIndex());
+                        displayCourses();
+                    }
+                });
 
-                mainLayout.addView(custom, params);
+                courseEditButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(self, co.eagerapp.manuelro.eager.Course.CourseEditActivity.class);
+                        app.setCourse(course);
+                        startActivity(intent);
+                    }
+                });
 
+                mainLayout.addView(custom);
+
+                counter++;
                 aux = aux.getNext();
             } while(aux.getNext() != courses.getCabeza());
 
