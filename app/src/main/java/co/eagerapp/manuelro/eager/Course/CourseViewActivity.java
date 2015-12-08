@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import co.eagerapp.manuelro.eager.Common.Singletons.DataHolder;
+import co.eagerapp.manuelro.eager.Course.Plain.CourseModel;
 import co.eagerapp.manuelro.eager.Event.Plain.EventModel;
 import co.eagerapp.manuelro.eager.R;
 import co.eagerapp.manuelro.eager.Structures.Cola.Cola;
@@ -25,6 +26,13 @@ import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
 
 public class CourseViewActivity extends AppCompatActivity {
     private DataHolder app;
+    private CourseViewActivity self;
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        setTextViewsValues();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +53,58 @@ public class CourseViewActivity extends AppCompatActivity {
         NestedScrollView mainView = (NestedScrollView) findViewById(R.id.courseDetailsView);
 
         app = (DataHolder) getApplicationContext();
-        setTitle(app.getCourse().getName());
+        self = this;
+        setTitle("View course");
 
         if(app.getCourse() != null){
-            TextView courseName = (TextView) findViewById(R.id.courseName);
-            TextView courseSuite = (TextView) findViewById(R.id.courseSuite);
-
-            courseName.setText(app.getCourse().getName());
-            courseSuite.setText(String.valueOf(app.getCourse().getSuite()));
-
+            setTextViewsValues();
             displayEvents();
             displayPastEvents();
+            setEventListeners();
         }
+    }
+
+
+
+    private void setEventListeners(){
+        Button courseEditButton = (Button) findViewById(R.id.editCourseButton);
+        Button courseDeleteButton = (Button) findViewById(R.id.deleteCourseButton);
+
+        courseEditButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(self, CourseEditActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        courseDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Nodo aux = app.getCourses().getCabeza();
+                int counter = 1;
+                if(aux != null)
+                    do{
+                        if(((CourseModel) aux.getData()) == app.getCourse()){
+                            app.getCourses().EliminaN(counter);
+                            finish();
+                            break;
+                        } else {
+                            counter++;
+                            aux = aux.getNext();
+                        }
+                    }while(aux != app.getCourses().getCabeza());
+
+            }
+        });
+    }
+
+    private void setTextViewsValues(){
+        TextView courseName = (TextView) findViewById(R.id.courseName);
+        TextView courseSuite = (TextView) findViewById(R.id.courseSuite);
+
+        courseName.setText(app.getCourse().getName());
+        courseSuite.setText(String.valueOf(app.getCourse().getSuite()));
     }
 
     private void displayEvents(){
@@ -98,7 +146,7 @@ public class CourseViewActivity extends AppCompatActivity {
                                     counter++;
                                     aux = aux.getNext();
                                 }
-                            } while (aux.getNext() != events.getCabeza());
+                            } while (aux != events.getCabeza());
                     }
                 });
 
@@ -106,7 +154,7 @@ public class CourseViewActivity extends AppCompatActivity {
                 mainLayout.addView(custom);
 
                 aux = aux.getNext();
-            } while(aux.getNext() != events.getCabeza());
+            } while(aux != events.getCabeza());
 
     }
 
