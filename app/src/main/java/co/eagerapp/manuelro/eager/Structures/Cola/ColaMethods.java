@@ -41,7 +41,7 @@ public class ColaMethods {
 
 
     public void eliminar(int position){
-        if(position>original.size())System.out.println("La posicion: "+position+" se encuentra vacia");
+        if(position>original.size()) System.out.println("La posicion: "+position+" se encuentra vacia");
         else{
             Nodo temp = original.atiende();
             while(temp != null){

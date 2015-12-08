@@ -9,6 +9,7 @@ import co.eagerapp.manuelro.eager.Common.Helpers.SchemaBuilderHelper;
 import co.eagerapp.manuelro.eager.Common.Interfaces.MockData;
 import co.eagerapp.manuelro.eager.Event.Plain.EventModel;
 import co.eagerapp.manuelro.eager.EventType.Plain.EventTypeModel;
+import co.eagerapp.manuelro.eager.Structures.Cola.Cola;
 import co.eagerapp.manuelro.eager.Structures.Lista.Lista;
 import co.eagerapp.manuelro.eager.Structures.Lista.Nodo;
 
@@ -22,9 +23,11 @@ public class CourseModel implements MockData {
     // private Professor professor;
     // private List groups;
     private Lista events;
+    private Cola pastEvents;
 
     public CourseModel(String name) {
         this.name = name;
+        this.pastEvents = new Cola();
     }
 
     public String getName() {
@@ -51,14 +54,21 @@ public class CourseModel implements MockData {
         return events;
     }
 
+    public void setPastEvents(Cola pastEvents) {
+        this.pastEvents = pastEvents;
+    }
+
+    public Cola getPastEvents() {
+        return pastEvents;
+    }
 
     @Override
-    public void populate(int n) {
+    public void populate(int eventsN) {
         Lista eventsList = new Lista();
         EventTypeModel eventType = new EventTypeModel("Meeting");
 
-        for(int i = 0; i <= n; i++){
-            EventModel event = new EventModel("Event " + i, i, eventType);
+        for(int i = 0; i <= eventsN; i++){
+            EventModel event = new EventModel("Event title for event number " + i, i, eventType);
             Nodo nodo = new Nodo(event);
             eventsList.inserta(nodo);
         }

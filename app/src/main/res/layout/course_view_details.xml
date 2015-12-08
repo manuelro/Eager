@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/courseNameView01"
+        android:id="@+id/courseName"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -17,9 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Suitez"
-        android:id="@+id/courseSuiteView01"
-        android:layout_below="@+id/courseNameView01"
+        android:text="Suite"
+        android:id="@+id/courseSuite"
+        android:layout_below="@+id/courseName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -41,7 +41,7 @@
         android:textSize="12dp"
         android:allowUndo="false"
         android:layout_marginTop="22dp"
-        android:layout_below="@+id/courseSuiteView01"
+        android:layout_below="@+id/courseSuite"
         android:layout_toRightOf="@+id/editCourseButton"
         android:layout_toEndOf="@+id/editCourseButton" />
 
@@ -62,7 +62,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Events"
             android:id="@+id/textView8"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="left|center_horizontal" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -74,9 +74,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Previous Events"
+            android:text="Deleted Events"
             android:id="@+id/textView9"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="left|center_horizontal" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pastEventsListView"></LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
