@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity
 
                 counter++;
                 aux = aux.getNext();
-            } while(aux.getNext() != courses.getCabeza());
+            } while(aux != courses.getCabeza());
 
     }
 
